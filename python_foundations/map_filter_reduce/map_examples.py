@@ -1,13 +1,15 @@
-# from data.play_data import get_list_of_floats
-from output import sample
+"""
+Just use lists comprehensions honestly
+"""
 
-# float_list_50 = get_list_of_floats(50)
+from data.play_data import get_list_of_floats
 
-# print(float_list_50)
+float_list_50 = get_list_of_floats(50)
 
-import os
+trunc_digits = map(lambda x: float(f"{x:.2f}"), float_list_50)
 
-cwd = os.getcwd()
-print(cwd)
-dir_stuff = os.listdir(cwd)
-print(dir_stuff)
+list_comp_version = [float(f"{i:.2f}") for i in float_list_50]
+compare_list = zip(float_list_50, trunc_digits, list_comp_version)
+
+for raw, truncated, list_comp in compare_list:
+    print(truncated, list_comp, raw)
